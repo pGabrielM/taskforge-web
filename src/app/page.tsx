@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import TasksResponse from "@/types/tasks";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import TasksCreationModal from "../components/tasks/TaskCreateModal";
 import TaskDeleteModal from "@/components/tasks/TaskDeleteModal";
 
@@ -14,7 +14,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const session = useSession()
 
-  const getTasks = async () => {
+  const getTasks = useCallback(async () => {
     const res = await fetch(session.status == 'authenticated' ? '/api/user/task' : '/api/task')
 
     if (!res.ok) {
@@ -27,11 +27,11 @@ export default function Home() {
 
     setTasks(data)
     setIsLoading(false)
-  }
+  }, [session.status])
 
   useEffect(() => {
     getTasks()
-  }, [session])
+  }, [getTasks])
 
   return (
     <main className="flex-1 p-6">
