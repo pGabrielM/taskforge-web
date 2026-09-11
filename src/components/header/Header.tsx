@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <header className="bg-gray-900 text-white py-4 px-6 flex justify-between">
-      <h1 className="text-2xl font-bold"><Link href={'/'}>Laravel 11 - Task Manager</Link></h1>
+      <h1 className="text-2xl font-bold"><Link href={'/'}>Taskforge</Link></h1>
       <div className="flex gap-2">
         <div className="text-center ">
           <p className="text-sm">{session.data?.user.name}</p>

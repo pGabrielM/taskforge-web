@@ -11,8 +11,8 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: "Laravel 11 - Client",
-  description: "Client consuming Laravel 11 API",
+  title: "Taskforge Web",
+  description: "A modern task workspace powered by a Laravel API.",
 };
 
 export default function RootLayout({
