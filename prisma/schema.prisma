@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String      @id @default(cuid())
+  name         String
+  email        String      @unique
+  passwordHash String      @map("password_hash")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  clients      Client[]
+  projects     Project[]
+  timeEntries  TimeEntry[]
+
+  @@map("users")
+}
+
+model Client {
+  id        String    @id @default(cuid())
+  ownerId   String    @map("owner_id")
+  name      String
+  company   String?
+  email     String?
+  phone     String?
+  createdAt DateTime  @default(now()) @map("created_at")
+  owner     User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  projects  Project[]
+
+  @@index([ownerId])
+  @@map("clients")
+}
+
+enum ProjectStatus {
+  ACTIVE
+  PAUSED
+  DONE
+}
+
+model Project {
+  id          String        @id @default(cuid())
+  ownerId     String        @map("owner_id")
+  clientId    String?       @map("client_id")
+  name        String
+  description String?
+  color       String        @default("violet")
+  status      ProjectStatus @default(ACTIVE)
+  dueDate     DateTime?     @map("due_date")
+  hourlyRate  Decimal?      @map("hourly_rate") @db.Decimal(10, 2)
+  shareToken  String?       @unique @map("share_token")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+  owner       User          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  client      Client?       @relation(fields: [clientId], references: [id], onDelete: SetNull)
+  tasks       Task[]
+
+  @@index([ownerId])
+  @@map("projects")
+}
+
+enum TaskStatus {
+  TODO
+  DOING
+  REVIEW
+  DONE
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+model Task {
+  id             String      @id @default(cuid())
+  projectId      String      @map("project_id")
+  title          String
+  description    String?
+  status         TaskStatus  @default(TODO)
+  priority       Priority    @default(MEDIUM)
+  position       Float       @default(0)
+  dueDate        DateTime?   @map("due_date")
+  estimateHours  Float?      @map("estimate_hours")
+  clientVisible  Boolean     @default(true) @map("client_visible")
+  completedAt    DateTime?   @map("completed_at")
+  createdAt      DateTime    @default(now()) @map("created_at")
+  updatedAt      DateTime    @updatedAt @map("updated_at")
+  project        Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  timeEntries    TimeEntry[]
+
+  @@index([projectId, status, position])
+  @@map("tasks")
+}
+
+model TimeEntry {
+  id        String    @id @default(cuid())
+  taskId    String    @map("task_id")
+  userId    String    @map("user_id")
+  startedAt DateTime  @map("started_at")
+  endedAt   DateTime? @map("ended_at")
+  minutes   Int       @default(0)
+  note      String?
+  task      Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, startedAt])
+  @@index([taskId])
+  @@map("time_entries")
+}
