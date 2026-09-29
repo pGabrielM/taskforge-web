@@ -9,8 +9,8 @@ import { initials } from '@/lib/utils'
 export function UserMenu({ name, email }: { name: string; email: string }) {
   return (
     <Dropdown.Root>
-      <Dropdown.Trigger className="flex items-center gap-2 rounded-lg p-1 pr-2 text-left hover:bg-zinc-100 focus:outline-none">
-        <span className="flex size-8 items-center justify-center rounded-full bg-brand-600 text-xs font-semibold text-white">
+      <Dropdown.Trigger className="flex items-center gap-2 rounded-md p-1 pr-2 text-left hover:bg-zinc-100 focus:outline-none">
+        <span className="flex size-8 items-center justify-center rounded-md border-2 border-zinc-900 bg-brand-500 text-xs font-bold text-zinc-950">
           {initials(name)}
         </span>
         <span className="hidden text-sm font-medium text-zinc-700 sm:block">{name}</span>
@@ -19,7 +19,7 @@ export function UserMenu({ name, email }: { name: string; email: string }) {
         <Dropdown.Content
           align="end"
           sideOffset={6}
-          className="z-50 w-60 rounded-xl border border-zinc-200 bg-white p-1.5 shadow-lg"
+          className="z-50 w-60 rounded-md border-2 border-zinc-900 bg-white p-1.5 shadow-forge"
         >
           <div className="px-2.5 py-2">
             <p className="truncate text-sm font-medium text-zinc-900">{name}</p>

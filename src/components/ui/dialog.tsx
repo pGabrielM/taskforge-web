@@ -21,13 +21,13 @@ export function DialogContent({
       <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-zinc-950/40 backdrop-blur-[2px] data-[state=open]:animate-in" />
       <DialogPrimitive.Content
         className={cn(
-          'fixed top-1/2 left-1/2 z-50 max-h-[90vh] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-xl border border-zinc-200 bg-white p-6 shadow-xl focus:outline-none',
+          'fixed top-1/2 left-1/2 z-50 max-h-[90vh] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-md border-2 border-zinc-900 bg-white p-6 shadow-forge-lg focus:outline-none',
           className,
         )}
         {...props}
       >
         <div className="mb-5 pr-8">
-          <DialogPrimitive.Title className="text-base font-semibold text-zinc-900">
+          <DialogPrimitive.Title className="font-serif text-lg font-semibold text-zinc-900">
             {title}
           </DialogPrimitive.Title>
           {description ? (

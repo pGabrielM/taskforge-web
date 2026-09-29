@@ -45,7 +45,7 @@ export default async function SharedProjectPage({ params }: Params) {
         <h1 className="mt-1 text-2xl font-semibold tracking-tight">{project.name}</h1>
         {project.description && <p className="mt-2 text-zinc-600">{project.description}</p>}
 
-        <div className="mt-8 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
+        <div className="mt-8 forge-card p-6">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-4xl font-semibold tracking-tight tabular-nums">{project.progress.percent}%</p>
@@ -75,7 +75,7 @@ export default async function SharedProjectPage({ params }: Params) {
           return (
             <section key={status} className="mt-8">
               <h2 className="mb-3 text-sm font-semibold text-zinc-700">{taskStatusLabel[status]}</h2>
-              <ul className="divide-y divide-zinc-100 overflow-hidden rounded-xl border border-zinc-200 bg-white">
+              <ul className="divide-y divide-zinc-100 overflow-hidden forge-card">
                 {tasks.map((task) => (
                   <li key={task.id} className="flex items-center gap-3 px-4 py-3">
                     {statusIcon[task.status]}

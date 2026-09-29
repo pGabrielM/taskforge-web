@@ -11,14 +11,14 @@ export function MobileNav() {
   return (
     <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
       <DialogPrimitive.Trigger
-        className="rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 lg:hidden"
+        className="rounded-md border-2 border-zinc-900 bg-white p-1.5 text-zinc-900 lg:hidden"
         aria-label="Abrir menu"
       >
         <Menu className="size-5" />
       </DialogPrimitive.Trigger>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-zinc-950/40" />
-        <DialogPrimitive.Content className="fixed inset-y-0 left-0 z-50 w-72 bg-white p-4 shadow-xl focus:outline-none">
+        <DialogPrimitive.Content className="fixed inset-y-0 left-0 z-50 w-72 border-r-2 border-zinc-900 bg-zinc-50 p-4 focus:outline-none">
           <DialogPrimitive.Title className="sr-only">Menu</DialogPrimitive.Title>
           <DialogPrimitive.Description className="sr-only">Navegação</DialogPrimitive.Description>
           <div className="mb-6 px-2">

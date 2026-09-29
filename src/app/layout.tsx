@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { DM_Sans, Fraunces, JetBrains_Mono } from 'next/font/google'
 import { Toaster } from 'sonner'
 import { siteConfig } from '@/config/site'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const body = DM_Sans({ subsets: ['latin'], variable: '--font-body' })
+const display = Fraunces({ subsets: ['latin'], variable: '--font-display', axes: ['SOFT', 'WONK'] })
 const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono-face' })
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${mono.variable}`}>
+    <html lang="pt-BR" className={`${body.variable} ${display.variable} ${mono.variable}`}>
       <body>
         {children}
         <Toaster richColors position="bottom-right" />

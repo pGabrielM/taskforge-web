@@ -4,15 +4,15 @@ import type { ComponentProps } from 'react'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border-2 border-zinc-900 text-sm font-bold transition-all hover:-translate-x-px hover:-translate-y-px active:translate-x-0.5 active:translate-y-0.5 active:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        default: 'bg-brand-600 text-white shadow-sm hover:bg-brand-700',
-        secondary: 'border border-zinc-200 bg-white text-zinc-800 shadow-sm hover:bg-zinc-50',
-        ghost: 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900',
-        danger: 'bg-red-600 text-white shadow-sm hover:bg-red-700',
-        dark: 'bg-zinc-900 text-white shadow-sm hover:bg-zinc-800',
+        default: 'bg-brand-500 text-zinc-950 shadow-forge hover:bg-brand-400',
+        secondary: 'bg-white text-zinc-900 shadow-forge hover:bg-brand-50',
+        ghost: 'border-transparent text-zinc-700 hover:border-zinc-900 hover:bg-white hover:text-zinc-900',
+        danger: 'bg-red-600 text-white shadow-forge hover:bg-red-500',
+        dark: 'bg-zinc-900 text-brand-100 shadow-[3px_3px_0_0_var(--color-brand-500)] hover:bg-zinc-800',
       },
       size: {
         default: 'h-9 px-4',

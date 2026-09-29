@@ -41,10 +41,10 @@ function Column({
 }) {
   const { setNodeRef, isOver } = useDroppable({ id: status })
   return (
-    <div className="flex w-72 shrink-0 flex-col rounded-xl bg-zinc-100/70 lg:w-auto lg:min-w-0 lg:flex-1">
+    <div className="flex w-72 shrink-0 flex-col rounded-md border-2 border-zinc-900 bg-zinc-100 lg:w-auto lg:min-w-0 lg:flex-1">
       <div className="flex items-center gap-2 px-3 pt-3 pb-2">
         <span className={cn('size-2 rounded-full', taskStatusDot[status])} />
-        <h2 className="text-sm font-semibold text-zinc-800">{taskStatusLabel[status]}</h2>
+        <h2 className="font-serif text-base font-semibold text-zinc-900">{taskStatusLabel[status]}</h2>
         <span className="text-xs text-zinc-500">{tasks.length}</span>
         <button
           onClick={onCreate}
@@ -57,7 +57,7 @@ function Column({
       <SortableContext items={tasks.map((task) => task.id)} strategy={verticalListSortingStrategy}>
         <div
           ref={setNodeRef}
-          className={cn('flex min-h-32 flex-1 flex-col gap-2 rounded-b-xl p-2 transition-colors', isOver && 'bg-brand-50')}
+          className={cn('flex min-h-32 flex-1 flex-col gap-2 p-2 transition-colors', isOver && 'bg-brand-50')}
         >
           {tasks.map((task) => (
             <TaskCard key={task.id} task={task} running={task.id === runningTaskId} onOpen={() => onOpen(task)} />

@@ -2,7 +2,7 @@ import type { ComponentProps } from 'react'
 import { cn } from '@/lib/utils'
 
 const fieldBase =
-  'w-full rounded-lg border border-zinc-200 bg-white px-3 text-sm text-zinc-900 shadow-sm transition-colors placeholder:text-zinc-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:bg-zinc-50'
+  'w-full rounded-md border-2 border-zinc-900 bg-white px-3 text-sm text-zinc-900 transition-colors placeholder:text-zinc-400 focus:border-brand-600 focus:shadow-[3px_3px_0_0_var(--color-brand-500)] focus:outline-none disabled:cursor-not-allowed disabled:bg-zinc-50'
 
 export function Input({ className, ...props }: ComponentProps<'input'>) {
   return <input className={cn(fieldBase, 'h-9', className)} {...props} />

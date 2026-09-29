@@ -60,9 +60,9 @@ export function TaskCard({ task, running, onOpen }: { task: BoardTask; running: 
       {...listeners}
       onClick={onOpen}
       className={cn(
-        'cursor-grab rounded-lg border border-zinc-200 bg-white p-3 shadow-sm transition-shadow hover:border-zinc-300 hover:shadow-md active:cursor-grabbing',
+        'cursor-grab rounded-sm border-2 border-zinc-900 bg-white p-3 shadow-[2px_2px_0_0_#211a11] transition-all hover:-translate-x-px hover:-translate-y-px hover:shadow-forge active:cursor-grabbing',
         isDragging && 'opacity-40',
-        running && 'ring-2 ring-brand-500/40',
+        running && 'bg-brand-50',
       )}
     >
       <TaskCardBody task={task} running={running} />

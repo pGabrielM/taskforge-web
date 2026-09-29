@@ -39,12 +39,12 @@ export default async function ProjectsPage() {
               <Link
                 key={project.id}
                 href={`/app/projects/${project.id}`}
-                className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                className="group flex flex-col rounded-md border-2 border-zinc-900 bg-white p-5 shadow-forge transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-forge-lg"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-2">
-                    <span className={`size-2.5 shrink-0 rounded-full ${color.dot}`} />
-                    <h2 className="truncate font-semibold text-zinc-900 group-hover:text-brand-700">{project.name}</h2>
+                    <span className={`size-3 shrink-0 rounded-sm border border-zinc-900 ${color.dot}`} />
+                    <h2 className="truncate font-serif text-lg font-semibold text-zinc-900 group-hover:text-brand-700">{project.name}</h2>
                   </div>
                   <Badge tone={projectStatusTone[project.status]}>{projectStatusLabel[project.status]}</Badge>
                 </div>

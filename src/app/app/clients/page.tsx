@@ -25,7 +25,7 @@ export default async function ClientsPage() {
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {clients.map((client) => (
-            <div key={client.id} className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
+            <div key={client.id} className="forge-card p-5">
               <div className="flex items-start gap-3">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-100 text-sm font-semibold text-brand-700">
                   {initials(client.name)}

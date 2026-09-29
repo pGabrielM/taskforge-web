@@ -6,23 +6,23 @@ import { siteConfig } from '@/config/site'
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200/70 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b-2 border-zinc-900 bg-zinc-50/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-4 sm:px-6">
         <Link href="/">
           <Logo />
         </Link>
-        <nav className="hidden items-center gap-6 text-sm text-zinc-600 md:flex">
-          <a href="#recursos" className="hover:text-zinc-900">
+        <nav className="hidden items-center gap-6 font-mono text-xs font-bold tracking-wider text-zinc-700 uppercase md:flex">
+          <a href="#recursos" className="hover:text-brand-700">
             Recursos
           </a>
-          <a href="#como-funciona" className="hover:text-zinc-900">
+          <a href="#como-funciona" className="hover:text-brand-700">
             Como funciona
           </a>
-          <a href="#stack" className="hover:text-zinc-900">
+          <a href="#stack" className="hover:text-brand-700">
             Tecnologia
           </a>
         </nav>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-3">
           <Button asChild variant="ghost" size="icon" className="hidden sm:inline-flex">
             <a href={siteConfig.repositoryUrl} target="_blank" rel="noreferrer" aria-label="GitHub">
               <Github className="size-5" />

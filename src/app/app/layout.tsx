@@ -16,26 +16,26 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex min-h-screen">
-      <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-zinc-200 bg-white px-3 py-4 lg:flex">
-        <Link href="/app" className="mb-6 px-2">
-          <Logo />
+      <aside className="sticky top-0 hidden h-screen w-[76px] shrink-0 flex-col items-center gap-8 border-r-2 border-zinc-900 bg-zinc-100 py-4 lg:flex">
+        <Link href="/app" aria-label="TaskForge">
+          <Logo compact />
         </Link>
-        <SidebarNav />
-        <div className="mt-auto rounded-xl border border-zinc-200 bg-zinc-50 p-3 text-xs text-zinc-500">
-          Projeto open source por{' '}
-          <a href={siteConfig.author.url} className="font-medium text-zinc-700 hover:underline">
-            {siteConfig.author.name}
-          </a>
-          .
-        </div>
+        <SidebarNav rail />
+        <a
+          href={siteConfig.author.url}
+          title={`Projeto open source por ${siteConfig.author.name}`}
+          className="mt-auto font-mono text-[10px] font-bold tracking-widest text-zinc-500 uppercase [writing-mode:vertical-rl] hover:text-zinc-900"
+        >
+          open source · {siteConfig.author.name}
+        </a>
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">
         {isDemo && (
-          <div className="bg-zinc-900 px-4 py-1.5 text-center text-xs text-zinc-300">
+          <div className="border-b-2 border-zinc-900 bg-brand-300 px-4 py-1.5 text-center text-xs font-bold text-zinc-950">
             Você está na conta demo — fique à vontade para criar, editar e apagar dados.
           </div>
         )}
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-zinc-200 bg-white/85 px-4 backdrop-blur sm:px-6">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b-2 border-zinc-900 bg-zinc-50/90 px-4 backdrop-blur sm:px-6">
           <MobileNav />
           <div className="lg:hidden">
             <Logo compact />

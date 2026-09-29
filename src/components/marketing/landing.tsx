@@ -21,20 +21,19 @@ export type LandingContent = {
 
 export function Landing({ content }: { content: LandingContent }) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <SiteHeader />
       <main>
-        <section className="relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-x-0 -top-40 h-[480px] bg-[radial-gradient(ellipse_at_top,var(--color-brand-100),transparent_65%)]" />
-          <div className="relative mx-auto max-w-6xl px-4 pt-16 pb-12 text-center sm:px-6 sm:pt-24">
-            <span className="inline-flex items-center rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700">
+        <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 pt-14 pb-20 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:pt-20">
+          <div>
+            <span className="inline-block -rotate-2 border-2 border-zinc-900 bg-brand-300 px-3 py-1 font-mono text-xs font-bold tracking-wider text-zinc-950 uppercase shadow-forge">
               {content.eyebrow}
             </span>
-            <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-balance text-zinc-900 sm:text-5xl lg:text-6xl">
+            <h1 className="mt-7 text-5xl leading-[1.02] font-semibold tracking-tight text-balance text-zinc-900 sm:text-6xl">
               {content.title}
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-balance text-zinc-600">{content.subtitle}</p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <p className="mt-6 max-w-xl text-lg text-zinc-700">{content.subtitle}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <Link href="/login">
                   Testar com a conta demo <ArrowRight />
@@ -46,81 +45,93 @@ export function Landing({ content }: { content: LandingContent }) {
                 </a>
               </Button>
             </div>
-            <ul className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-zinc-500">
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-zinc-700">
               {content.proof.map((item) => (
                 <li key={item} className="flex items-center gap-1.5">
-                  <Check className="size-4 text-brand-600" /> {item}
+                  <Check className="size-4 text-brand-700" strokeWidth={3} /> {item}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-            <div className="rounded-2xl border border-zinc-200 bg-zinc-100 p-2 shadow-2xl shadow-brand-900/10">
+          <div className="relative">
+            <div className="absolute -inset-3 translate-x-4 translate-y-4 rounded-md bg-brand-500" aria-hidden />
+            <div className="relative rotate-1 rounded-md border-2 border-zinc-900 bg-white p-1.5 shadow-forge-lg">
               <Image
                 src={content.screenshot.src}
                 alt={content.screenshot.alt}
                 width={1600}
                 height={1000}
                 priority
-                className="rounded-xl border border-zinc-200"
+                className="rounded-sm border border-zinc-900"
               />
             </div>
           </div>
         </section>
 
-        <section id="recursos" className="border-t border-zinc-100 bg-zinc-50 py-20">
+        <div className="overflow-hidden border-y-2 border-zinc-900 bg-brand-500 py-2.5 font-mono text-xs font-bold tracking-widest whitespace-nowrap text-zinc-950 uppercase">
+          <div className="flex gap-10 px-6">
+            {Array.from({ length: 4 }).flatMap((_, i) =>
+              content.features.map((feature) => <span key={`${i}-${feature.title}`}>◆ {feature.title}</span>),
+            )}
+          </div>
+        </div>
+
+        <section id="recursos" className="py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl font-semibold tracking-tight">Tudo o que você precisa, nada que atrapalhe</h2>
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {content.features.map((feature) => (
-                <div key={feature.title} className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-                  <div className="flex size-10 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+            <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-balance">
+              Tudo o que você precisa, nada que atrapalhe
+            </h2>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {content.features.map((feature, index) => (
+                <div
+                  key={feature.title}
+                  className={`forge-card p-6 transition-transform hover:-translate-y-1 ${index % 2 ? 'sm:translate-y-3' : ''}`}
+                >
+                  <div className="flex size-11 items-center justify-center rounded-sm border-2 border-zinc-900 bg-brand-200 text-zinc-950">
                     <feature.icon className="size-5" />
                   </div>
-                  <h3 className="mt-4 font-semibold">{feature.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">{feature.description}</p>
+                  <h3 className="mt-4 text-xl font-semibold">{feature.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-700">{feature.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="como-funciona" className="py-20">
+        <section id="como-funciona" className="border-y-2 border-zinc-900 bg-zinc-100 py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl font-semibold tracking-tight">Como funciona</h2>
+            <h2 className="text-4xl font-semibold tracking-tight">Como funciona</h2>
             <ol className="mt-10 grid gap-8 md:grid-cols-3">
               {content.steps.map((step, index) => (
-                <li key={step.title}>
-                  <span className="flex size-9 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white">
-                    {index + 1}
-                  </span>
-                  <h3 className="mt-4 font-semibold">{step.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">{step.description}</p>
+                <li key={step.title} className="relative border-l-4 border-brand-500 pl-6">
+                  <span className="font-serif text-6xl leading-none font-semibold text-brand-500">{index + 1}</span>
+                  <h3 className="mt-2 text-xl font-semibold">{step.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-700">{step.description}</p>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        <section id="stack" className="border-t border-zinc-100 bg-zinc-950 py-20 text-white">
+        <section id="stack" className="bg-zinc-900 py-20 text-zinc-100">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
               <div>
-                <h2 className="text-3xl font-semibold tracking-tight">Por dentro</h2>
+                <h2 className="text-4xl font-semibold tracking-tight text-brand-200">Por dentro</h2>
                 <p className="mt-3 text-zinc-400">
                   Código aberto, tipado de ponta a ponta e pronto para rodar com um comando. Leia o README para a
                   arquitetura completa.
                 </p>
-                <Button asChild variant="secondary" className="mt-6">
+                <Button asChild className="mt-6">
                   <a href={siteConfig.repositoryUrl} target="_blank" rel="noreferrer">
                     <Github className="size-4" /> Abrir no GitHub
                   </a>
                 </Button>
               </div>
-              <dl className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2">
+              <dl className="grid gap-px overflow-hidden rounded-md border-2 border-brand-500 bg-brand-500 sm:grid-cols-2">
                 {content.stack.map((item) => (
-                  <div key={item.name} className="bg-zinc-950 p-5">
-                    <dt className="font-medium">{item.name}</dt>
+                  <div key={item.name} className="bg-zinc-900 p-5">
+                    <dt className="font-mono text-sm font-bold text-brand-300">{item.name}</dt>
                     <dd className="mt-1 text-sm text-zinc-400">{item.detail}</dd>
                   </div>
                 ))}
@@ -131,8 +142,8 @@ export function Landing({ content }: { content: LandingContent }) {
 
         <section className="py-20">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <h2 className="text-3xl font-semibold tracking-tight">Veja funcionando em 10 segundos</h2>
-            <p className="mt-3 text-zinc-600">A conta demo já vem com dados de exemplo. Nenhum cadastro necessário.</p>
+            <h2 className="text-4xl font-semibold tracking-tight">Veja funcionando em 10 segundos</h2>
+            <p className="mt-3 text-zinc-700">A conta demo já vem com dados de exemplo. Nenhum cadastro necessário.</p>
             <Button asChild size="lg" className="mt-8">
               <Link href="/login">
                 Abrir a demo <ArrowRight />

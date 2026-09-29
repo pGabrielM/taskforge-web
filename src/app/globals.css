@@ -1,19 +1,35 @@
 @import 'tailwindcss';
 
-@theme inline {
-  --color-brand-50: var(--color-violet-50);
-  --color-brand-100: var(--color-violet-100);
-  --color-brand-200: var(--color-violet-200);
-  --color-brand-300: var(--color-violet-300);
-  --color-brand-400: var(--color-violet-400);
-  --color-brand-500: var(--color-violet-500);
-  --color-brand-600: var(--color-violet-600);
-  --color-brand-700: var(--color-violet-700);
-  --color-brand-800: var(--color-violet-800);
-  --color-brand-900: var(--color-violet-900);
-  --color-brand-950: var(--color-violet-950);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+@theme {
+  /* papel quente + tinta escura no lugar do zinc padrão */
+  --color-zinc-50: #f8f2e6;
+  --color-zinc-100: #efe6d2;
+  --color-zinc-200: #dccfb4;
+  --color-zinc-300: #c5b593;
+  --color-zinc-400: #9c8c6f;
+  --color-zinc-500: #7a6b52;
+  --color-zinc-600: #5e5240;
+  --color-zinc-700: #43392b;
+  --color-zinc-800: #2e261b;
+  --color-zinc-900: #211a11;
+  --color-zinc-950: #150f08;
+  /* laranja-brasa */
+  --color-brand-50: #fff3e3;
+  --color-brand-100: #ffe1bd;
+  --color-brand-200: #ffc584;
+  --color-brand-300: #ffa44a;
+  --color-brand-400: #ff8a1f;
+  --color-brand-500: #f47106;
+  --color-brand-600: #d95a02;
+  --color-brand-700: #b44405;
+  --color-brand-800: #8f350b;
+  --color-brand-900: #762d0d;
+  --color-brand-950: #421404;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-display), ui-serif, Georgia, serif;
   --font-mono: var(--font-mono-face), ui-monospace, monospace;
+  --shadow-forge: 3px 3px 0 0 #211a11;
+  --shadow-forge-lg: 6px 6px 0 0 #211a11;
 }
 
 :root {
@@ -22,17 +38,29 @@
 
 body {
   @apply bg-zinc-50 text-zinc-900 antialiased;
+  background-image: radial-gradient(#dccfb4 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-variation-settings: 'SOFT' 50, 'WONK' 1;
 }
 
 ::selection {
-  @apply bg-brand-200 text-brand-950;
+  @apply bg-brand-300 text-zinc-950;
 }
 
 @layer components {
   .field-label {
-    @apply mb-1.5 block text-sm font-medium text-zinc-700;
+    @apply mb-1.5 block text-xs font-bold tracking-wide text-zinc-700 uppercase;
   }
   .field-error {
-    @apply mt-1 text-xs text-red-600;
+    @apply mt-1 text-xs font-medium text-red-700;
+  }
+  .forge-card {
+    @apply rounded-md border-2 border-zinc-900 bg-white shadow-forge;
   }
 }
