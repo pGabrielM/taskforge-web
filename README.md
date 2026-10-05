@@ -12,7 +12,7 @@ project — no spreadsheets, no "any updates?" messages.
 
 ![TaskForge board](public/screenshots/board.png)
 
-**Live demo:** [taskforge-web-blue.vercel.app/demo](https://taskforge-web-blue.vercel.app/demo) — signs in straight to a sample account.
+**Live demo:** [taskforge.letinfo.dev/demo](https://taskforge.letinfo.dev/demo) — signs in straight to a sample account.
 
 > **Try it:** open the app and click **"Explorar com a conta demo"** — the demo account comes with
 > clients, projects, tasks and two weeks of time entries. (`demo@taskforge.dev` / `demo1234`)
