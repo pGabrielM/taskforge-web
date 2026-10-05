@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: 'TaskForge',
+  name: 'Task Forge',
   shortTagline: 'projetos e entregas sem planilha',
   tagline: 'Organize projetos, registre horas e mostre o progresso ao cliente — sem planilhas.',
   description:

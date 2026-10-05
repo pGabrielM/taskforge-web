@@ -17,7 +17,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen">
       <aside className="sticky top-0 hidden h-screen w-[76px] shrink-0 flex-col items-center gap-8 border-r-2 border-zinc-900 bg-zinc-100 py-4 lg:flex">
-        <Link href="/app" aria-label="TaskForge">
+        <Link href="/app" aria-label="Task Forge">
           <Logo compact />
         </Link>
         <SidebarNav rail />

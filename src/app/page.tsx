@@ -6,7 +6,7 @@ const content: LandingContent = {
   title: 'Seus projetos, horas e clientes no mesmo lugar',
   subtitle:
     'Organize entregas em um quadro kanban, registre o tempo de cada tarefa e envie ao cliente um link para ele acompanhar o andamento — sem planilhas nem mensagens de status.',
-  screenshot: { src: '/screenshots/board.png', alt: 'Quadro kanban do TaskForge' },
+  screenshot: { src: '/screenshots/board.png', alt: 'Quadro kanban do Task Forge' },
   proof: ['Grátis e open source', 'Portal do cliente sem login', 'Exporta horas em CSV'],
   features: [
     { icon: FolderKanban, title: 'Kanban por projeto', description: 'Arraste tarefas entre A fazer, Em andamento, Revisão e Concluído. Prioridade, prazo e estimativa em cada card.' },
